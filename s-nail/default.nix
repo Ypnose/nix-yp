@@ -23,7 +23,6 @@ stdenv.mkDerivation (finalAttrs: {
   dontConfigure = true;
 
   buildPhase = ''
-    runHook preBuild
     make config \
       OPT_GSSAPI=no \
       OPT_POP3=no \
@@ -32,13 +31,10 @@ stdenv.mkDerivation (finalAttrs: {
       VAL_SYSCONFDIR=/etc \
       VAL_MAIL=/var/spool/mail
     make build
-    runHook postBuild
   '';
 
   installPhase = ''
-    runHook preInstall
     make DESTDIR=$out packager-install
-    runHook postInstall
   '';
 
   meta = {
