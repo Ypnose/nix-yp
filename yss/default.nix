@@ -13,6 +13,7 @@ stdenv.mkDerivation (finalAttrs: {
   };
 
   dontUnpack = true;
+
   installPhase = ''
     install -Dm 0755 $src $out/bin/yss
   '';

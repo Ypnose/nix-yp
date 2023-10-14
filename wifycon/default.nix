@@ -24,6 +24,7 @@ in stdenv.mkDerivation (finalAttrs: {
 
   dontUnpack = true;
   nativeBuildInputs = [ makeWrapper ];
+
   installPhase = ''
     install -Dm 0755 $src $out/bin/wifycon
     sed -i 's|mksh|env mksh|' $out/bin/wifycon
