@@ -11,6 +11,7 @@
       system = "x86_64-linux";
       cmd = nixpkgs.legacyPackages.${system};
       build = pkg: cmd.callPackage ./${pkg} {};
+      build-static = pkg: cmd.pkgsStatic.callPackage ./${pkg} {};
     in {
       packages.x86_64-linux.s-nail = build "s-nail";
       packages.x86_64-linux.wifycon = build "wifycon";
