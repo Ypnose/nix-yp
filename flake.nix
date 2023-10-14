@@ -3,7 +3,9 @@
     nixpkgs.url = "nixpkgs";
   };
 
+  # nix flake show
   # nix build .#PKG
+  # nix log .#PKG
   outputs = { self, nixpkgs, ... }:
     let
       system = "x86_64-linux";
