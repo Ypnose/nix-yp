@@ -9,7 +9,8 @@
   outputs = { self, nixpkgs, ... }:
     let
       system = "x86_64-linux";
-      build = pkg: nixpkgs.legacyPackages.${system}.callPackage ./${pkg} {};
+      cmd = nixpkgs.legacyPackages.${system};
+      build = pkg: cmd.callPackage ./${pkg} {};
     in {
       packages.x86_64-linux.s-nail = build "s-nail";
       packages.x86_64-linux.wifycon = build "wifycon";
