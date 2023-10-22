@@ -1,8 +1,10 @@
 { lib
+, pkgs
 , stdenv
 , fetchurl
 , makeWrapper
 , iproute2
+, procps
 , wpa_supplicant
 , dhcpcd
 }:
@@ -10,16 +12,17 @@
 let
   path = lib.makeBinPath ([
     iproute2
+    procps
     wpa_supplicant
     dhcpcd
   ]);
 in stdenv.mkDerivation (finalAttrs: {
   pname = "wifycon";
-  version = "20200216";
+  version = "20231022";
 
   src = fetchurl {
     url = "https://raw.githubusercontent.com/Ypnose/dotfiles/master/bin/wifycon";
-    hash = "sha256-Q+HBXiJ2YIJqAU80XBWmTbIrgxu4+952aYknCPT1+x8=";
+    hash = "sha256-H0BOmJJRBA1QP10b3kFqCeJfcbUpgmLSO+uu3HQjuIQ=";
   };
 
   dontUnpack = true;
