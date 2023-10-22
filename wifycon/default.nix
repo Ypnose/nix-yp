@@ -30,7 +30,9 @@ in stdenv.mkDerivation (finalAttrs: {
 
   installPhase = ''
     install -Dm 0755 $src $out/bin/wifycon
-    sed -i 's|mksh|env mksh|' $out/bin/wifycon
+    # Make sure shebang is modified
+    sed -i "1 s|/usr/bin/mksh|${lib.getBin pkgs.mksh}/bin/mksh|" \
+		$out/bin/wifycon
     wrapProgram $out/bin/wifycon \
       --prefix PATH : ${path}
   '';
