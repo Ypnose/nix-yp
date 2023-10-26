@@ -26,6 +26,9 @@ in stdenv.mkDerivation (finalAttrs: {
   };
 
   dontUnpack = true;
+  dontConfigure = true;
+  dontBuild = true;
+
   nativeBuildInputs = [ makeWrapper ];
 
   installPhase = ''
