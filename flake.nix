@@ -13,6 +13,7 @@
       build = pkg: cmd.callPackage ./${pkg} {};
       build-static = pkg: cmd.pkgsStatic.callPackage ./${pkg} {};
     in {
+      packages.x86_64-linux.dig-only = build "dig-only";
       packages.x86_64-linux.openbsd-ed = build-static "openbsd-ed";
       packages.x86_64-linux.s-nail = build "s-nail";
       packages.x86_64-linux.wifycon = build "wifycon";
