@@ -3,7 +3,7 @@
 , fetchurl
 }:
 
-stdenv.mkDerivation (finalAttrs: {
+stdenv.mkDerivation {
   pname = "yss";
   version = "20231003";
 
@@ -25,4 +25,4 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Script to display some information about the current system";
     platforms = lib.platforms.all;
   };
-})
+}

@@ -3,7 +3,7 @@
 , fetchFromGitHub
 }:
 
-stdenv.mkDerivation (finalAttrs: {
+stdenv.mkDerivation {
   pname = "openbsd-ed";
   version = "0.5";
 
@@ -25,4 +25,4 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Line-oriented text editor";
     platforms = lib.platforms.unix;
   };
-})
+}

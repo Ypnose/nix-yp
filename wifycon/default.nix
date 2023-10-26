@@ -16,7 +16,7 @@ let
     wpa_supplicant
     dhcpcd
   ]);
-in stdenv.mkDerivation (finalAttrs: {
+in stdenv.mkDerivation {
   pname = "wifycon";
   version = "20231022";
 
@@ -45,4 +45,4 @@ in stdenv.mkDerivation (finalAttrs: {
     description = "Script to connect on Wi-Fi networks";
     platforms = lib.platforms.all;
   };
-})
+}
