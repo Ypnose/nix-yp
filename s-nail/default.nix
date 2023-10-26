@@ -7,12 +7,12 @@
 , libidn2
 }:
 
-stdenv.mkDerivation (finalAttrs: {
+stdenv.mkDerivation rec {
   pname = "s-nail";
   version = "14.9.24";
 
   src = fetchurl {
-    url = "https://www.sdaoden.eu/downloads/s-nail-${finalAttrs.version}.tar.xz";
+    url = "https://www.sdaoden.eu/downloads/s-nail-${version}.tar.xz";
     hash = "sha256-JxTWuPsq87Nj/Hx5t20Fh1NxY0XRtuvNiHDs0OT374w=";
   };
 
@@ -42,4 +42,4 @@ stdenv.mkDerivation (finalAttrs: {
     description = "Environment for sending and receiving mail";
     platforms = lib.platforms.unix;
   };
-})
+}
