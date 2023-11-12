@@ -17,6 +17,7 @@
       packages.x86_64-linux.nvi-patched = build "nvi-patched";
       packages.x86_64-linux.openbsd-ed = build-static "openbsd-ed";
       packages.x86_64-linux.s-nail = build "s-nail";
+      packages.x86_64-linux.wg = build-static "wg";
       packages.x86_64-linux.wifycon = build "wifycon";
       packages.x86_64-linux.yss = build "yss";
   };
