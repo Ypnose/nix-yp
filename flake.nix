@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs";
   };
 
   # nix flake show
