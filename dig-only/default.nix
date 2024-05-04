@@ -11,11 +11,11 @@
 
 stdenv.mkDerivation rec {
   pname = "bind";
-  version = "9.18.24";
+  version = "9.18.26";
 
   src = fetchurl {
     url = "https://downloads.isc.org/isc/bind9/${version}/${pname}-${version}.tar.xz";
-    hash = "sha256-cJ1zAjyRFd2tO6tltsjHmlkBltDRFPXQyiUz29Ut32Y=";
+    hash = "sha256-df/uUnMelgTISbZY3ynpJ/HE8B1aceo+vL62NwLLZlE=";
   };
 
   nativeBuildInputs = [ pkg-config perl ];
