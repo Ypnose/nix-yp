@@ -4,6 +4,7 @@
   };
 
   # nix flake show
+  # nix hash to-sri sha256:HASH
   # nix build .#PKG
   # nix log .#PKG
   outputs = { self, nixpkgs, ... }:
