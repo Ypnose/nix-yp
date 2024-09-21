@@ -14,6 +14,7 @@
       build = pkg: cmd.callPackage ./${pkg} {};
       build-static = pkg: cmd.pkgsStatic.callPackage ./${pkg} {};
     in {
+      packages.x86_64-linux.apacheds = build "apacheds";
       packages.x86_64-linux.dig-only = build "dig-only";
       packages.x86_64-linux.nvi-patched = build "nvi-patched";
       packages.x86_64-linux.openbsd-ed = build-static "openbsd-ed";
