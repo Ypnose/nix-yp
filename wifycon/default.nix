@@ -18,11 +18,11 @@ let
   ]);
 in stdenv.mkDerivation {
   pname = "wifycon";
-  version = "20231022";
+  version = "20241119";
 
   src = fetchurl {
     url = "https://raw.githubusercontent.com/Ypnose/dotfiles/master/bin/wifycon";
-    hash = "sha256-H0BOmJJRBA1QP10b3kFqCeJfcbUpgmLSO+uu3HQjuIQ=";
+    hash = "sha256-R2yEQ1NfodFpk7qwlRbbcAgYEK6/g9HvikRZgsgiG4E=";
   };
 
   dontUnpack = true;
