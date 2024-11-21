@@ -16,6 +16,7 @@
     in {
       packages.x86_64-linux.apacheds = build "apacheds";
       packages.x86_64-linux.dig-only = build "dig-only";
+      packages.x86_64-linux.go-pushover = build "go-pushover";
       packages.x86_64-linux.nvi-patched = build "nvi-patched";
       packages.x86_64-linux.openbsd-ed = build-static "openbsd-ed";
       packages.x86_64-linux.s-nail = build "s-nail";
