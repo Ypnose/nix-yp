@@ -11,8 +11,8 @@ buildGoModule {
   src = fetchFromGitHub {
     owner = "ypnose";
     repo = "go-pushover";
-    rev = "03659a31f3275c964f862c896bd24ab2a4d4d1eb";
-    hash = "sha256-Ssv5U6QsL8YnQlTQX2X/PiNYrDyjoR6Qmogy8vcoGaw=";
+    rev = "3c0c6b12750bed87d3fd7d3821a3f8dee80e3e86";
+    hash = "sha256-fAJ2Mw5naHXeyRPXVgx0IlYM3Y6fwCcso9415tBMoio=";
   };
 
   vendorHash = null;
