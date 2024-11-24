@@ -5,13 +5,13 @@
 
 stdenv.mkDerivation {
   pname = "openbsd-ed";
-  version = "0.5";
+  version = "0.6";
 
   src = fetchFromGitHub {
     owner = "Ypnose";
     repo = "openbsd-ed";
-    rev = "7a3fc10df2d1250de3b732cc033d245fdcbe7f47";
-    sha256 = "sha256-eS17jgwSmpfRd1Rqk5x0bsHqVzuzVE5NFfKEoSPeXfM=";
+    rev = "1cbf408584e430915ca91c272db4b1462817695f";
+    sha256 = "sha256-g2U1ZV05BCf4o/6YChx8LF/HoOj17gBsU/DyUxwqmpw=";
   };
 
   dontConfigure = true;
