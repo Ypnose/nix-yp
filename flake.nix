@@ -21,6 +21,7 @@
           build-static = pkg: pkgs.pkgsStatic.callPackage ./${pkg} {};
         in {
           apacheds = build "apacheds";
+          csvview = build "csvview";
           dig-only = build "dig-only";
           go-pushover = build "go-pushover";
           ipinfo = build "ipinfo";
