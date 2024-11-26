@@ -23,6 +23,7 @@
           apacheds = build "apacheds";
           dig-only = build "dig-only";
           go-pushover = build "go-pushover";
+          ipinfo = build "ipinfo";
           nvi-patched = build "nvi-patched";
           openbsd-ed = build-static "openbsd-ed";
           s-nail = build "s-nail";
