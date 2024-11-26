@@ -23,7 +23,7 @@ buildGoModule rec {
 
   meta = {
     homepage = "https://github.com/Ypnose/gools";
-    description = "Simple tool to get EDF Tempo color";
+    description = "Simple tool to view and edit CSV files";
     platforms = lib.platforms.unix;
   };
 }
