@@ -20,6 +20,7 @@
           build = pkg: pkgs.callPackage ./${pkg} {};
           build-static = pkg: pkgs.pkgsStatic.callPackage ./${pkg} {};
         in {
+          again = build "again";
           apacheds = build "apacheds";
           csvview = build "csvview";
           dig-only = build "dig-only";
