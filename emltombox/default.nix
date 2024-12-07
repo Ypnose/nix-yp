@@ -11,8 +11,8 @@ buildGoModule rec {
   src = fetchFromGitHub {
     owner = "ypnose";
     repo = "gools";
-    rev = "f73d9b16c6dcb98c583ae9eef83e883d7c097472";
-    hash = "sha256-zhZLqUGKTGL9SHxr4Ci1VJ5/Vcnm7aN9LSNr6ALH45E=";
+    rev = "35c7e673b803fde0380b43217d6306553c8e53ec";
+    hash = "sha256-UripaWVjPSVxWn1GFV5k/VuUBzcCP3V7ujiysV4lf9U=";
   };
 
   vendorHash = null;
