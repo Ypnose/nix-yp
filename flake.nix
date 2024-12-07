@@ -24,6 +24,7 @@
           apacheds = build "apacheds";
           csvview = build "csvview";
           dig-only = build "dig-only";
+          emltombox = build "emltombox";
           go-pushover = build "go-pushover";
           ipinfo = build "ipinfo";
           nvi-patched = build "nvi-patched";
