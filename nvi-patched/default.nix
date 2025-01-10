@@ -40,6 +40,8 @@ stdenv.mkDerivation rec {
     ./nvi-29-file_backup.patch
     ./nvi-30-regex-character-class.patch
     ./nvi-31-64bit-int-crash.patch
+    ./nvi-39-add-function-prototypes-to-fix-implicit-function-dec.patch
+    ./nvi-40-add-more-function-prototypes-to-fix-Wimplicit-functi.patch
     ./nvi-50-nvi-o_path.patch
   ];
 

@@ -1,0 +1,50 @@
+From: OGAWA Hirofumi <hirofumi@mail.parknet.co.jp>
+Date: Mon, 10 Jun 2024 21:16:51 +0900
+Subject: Add more function prototypes to fix -Wimplicit-function-declaration
+
+Without this,
+
+   $ nvi a b
+   # ex command
+   :next
+   # error
+   BDB0171 seek: 1024: (1 * 1024) + 0: Bad file descriptor
+
+Like the above, nvi fails to open the next file ("b").
+
+Reviewed-By: Tobias Heider <me@tobhe.de>
+Bug-Debian: https://bugs.debian.org/1072923
+---
+ dist/configure | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/dist/configure b/dist/configure
+index d7fb54f..d78e87d 100755
+--- a/dist/configure
++++ b/dist/configure
+@@ -26719,6 +26719,7 @@ _ACEOF
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
++#include <sys/file.h>
+ #include <fcntl.h>
+ int
+ main ()
+@@ -27507,7 +27508,7 @@ _ACEOF
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
+-
++#include <stdlib.h>
+ int
+ main ()
+ {
+@@ -27632,6 +27633,8 @@ _ACEOF
+ cat confdefs.h >>conftest.$ac_ext
+ cat >>conftest.$ac_ext <<_ACEOF
+ /* end confdefs.h.  */
++#include <stdio.h>
++#include <stdlib.h>
+ main(){char buf[20]; exit(sprintf(buf, "XXX") != 3);}
+ _ACEOF
+ rm -f conftest$ac_exeext
