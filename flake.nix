@@ -30,6 +30,7 @@
           nvi-patched = build "nvi-patched";
           openbsd-ed = build-static "openbsd-ed";
           s-nail = build "s-nail";
+          sponge = build "sponge";
           tempo = build "tempo";
           wg = build-static "wg";
           wifycon = build "wifycon";
