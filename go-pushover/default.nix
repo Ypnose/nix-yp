@@ -6,20 +6,20 @@
 
 buildGoModule rec {
   pname = "go-pushover";
-  version = "20241123";
+  version = "20250111";
 
   src = fetchFromGitHub {
     owner = "ypnose";
     repo = "gools";
-    rev = "a41d8aa76ce769b7aa045590ec93ffc0c954c9f3";
-    hash = "sha256-dYwRh5bx5XelcS6mqy4Gmw5Di8uzjxufXyFf0U1Ne+s=";
+    rev = "24375a7d3e0d1c928e04c1a592bf684fef311b36";
+    hash = "sha256-Y4zjoQiTzSQKwW2vdfeF+7SRAp7Rwyx4RsUt4LXFq0U=";
   };
 
   vendorHash = null;
 
   sourceRoot = "${src.name}/go-pushover";
 
-  ldflags = [ "-s" ];
+  ldflags = [ "-w -s" ];
 
   meta = {
     homepage = "https://github.com/Ypnose/gools";
