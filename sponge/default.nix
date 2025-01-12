@@ -6,13 +6,13 @@
 
 buildGoModule rec {
   pname = "sponge";
-  version = "20250111";
+  version = "20250112";
 
   src = fetchFromGitHub {
     owner = "ypnose";
     repo = "gools";
-    rev = "24375a7d3e0d1c928e04c1a592bf684fef311b36";
-    hash = "sha256-Y4zjoQiTzSQKwW2vdfeF+7SRAp7Rwyx4RsUt4LXFq0U=";
+    rev = "ec0b36affc95737541152dbe001699a430097f7a";
+    hash = "sha256-6czQKn31gu9qHs8VUKDFf0kpUbX9roq+bs5wUbeDN0o=";
   };
 
   vendorHash = null;
