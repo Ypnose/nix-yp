@@ -29,6 +29,7 @@
           ipinfo = build "ipinfo";
           nvi-patched = build "nvi-patched";
           openbsd-ed = build-static "openbsd-ed";
+          printerinfo = build "printerinfo";
           s-nail = build "s-nail";
           sponge = build "sponge";
           tempo = build "tempo";
