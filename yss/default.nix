@@ -5,11 +5,11 @@
 
 stdenv.mkDerivation {
   pname = "yss";
-  version = "20231003";
+  version = "20250220";
 
   src = fetchurl {
     url = "https://framagit.org/Ypnose/yss/-/raw/master/yss";
-    hash = "sha256-JtWwEl1QTcvy+sbYyS0+VTkhl2FRS8PcRuvIuXLtpDQ=";
+    hash = "sha256-e47NvHr/0g3C6c0vmZTafyTF3lSDqGp/PhqPd6QH1NI=";
   };
 
   dontUnpack = true;
