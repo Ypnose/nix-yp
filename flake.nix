@@ -24,6 +24,7 @@
           apacheds = build "apacheds";
           csvview = build "csvview";
           dig-only = build "dig-only";
+          dmarcreport = build "dmarcreport";
           emltombox = build "emltombox";
           go-pushover = build "go-pushover";
           ipinfo = build "ipinfo";
