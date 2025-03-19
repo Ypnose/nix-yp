@@ -34,6 +34,7 @@
           s-nail = build "s-nail";
           sponge = build "sponge";
           tempo = build "tempo";
+          utfdumpcode = build "utfdumpcode";
           vipe = build "vipe";
           wg = build-static "wg";
           wifycon = build "wifycon";
