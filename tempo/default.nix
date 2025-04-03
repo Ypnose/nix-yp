@@ -6,13 +6,13 @@
 
 buildGoModule rec {
   pname = "tempo";
-  version = "20241207";
+  version = "20250403";
 
   src = fetchFromGitHub {
     owner = "ypnose";
     repo = "gools";
-    rev = "f73d9b16c6dcb98c583ae9eef83e883d7c097472";
-    hash = "sha256-zhZLqUGKTGL9SHxr4Ci1VJ5/Vcnm7aN9LSNr6ALH45E=";
+    rev = "bbdcf69422378cfc4126a4183722cc7128c3b316";
+    hash = "sha256-BiuF3XT7o0nILgDsLkJbU0RXSaYg79rpHS1cRhy54G0=";
   };
 
   vendorHash = null;
