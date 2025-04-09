@@ -6,13 +6,13 @@
 
 buildGoModule rec {
   pname = "go-pushover";
-  version = "20250330";
+  version = "20250409";
 
   src = fetchFromGitHub {
     owner = "ypnose";
     repo = "gools";
-    rev = "d625bdcd70ab9c46e71a92177d3ab6230383e1f7";
-    hash = "sha256-pRob+9F/bx19GRA+Ixxcnv7LQ1qvbnByHapCLYijx4c=";
+    rev = "11affc78a0d49ca269c4a57bd8c3a854b6b70f6b";
+    hash = "sha256-oeLFi5V21OSwUnpnj4rXG3qy0Bo6t6AkCzfKFRQpUOU=";
   };
 
   vendorHash = null;
