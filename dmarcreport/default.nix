@@ -6,13 +6,13 @@
 
 buildGoModule rec {
   pname = "dmarcreport";
-  version = "20250227";
+  version = "20250612";
 
   src = fetchFromGitHub {
     owner = "ypnose";
     repo = "gools";
-    rev = "59283125eb1ea37d7de0e1f6a8bfd642022f5c7f";
-    hash = "sha256-iF3D1YPiYBVNk1EJ+HNZ8saeQtbkrv+yEnIxAeni0aE=";
+    rev = "2d07ac34d67149e7db0c8601863c2080762aa793";
+    hash = "sha256-FobeYX4XRDpO/pOPaFd1ZLCFnzcC0GBIum0xWTBxS8Q=";
   };
 
   vendorHash = null;
