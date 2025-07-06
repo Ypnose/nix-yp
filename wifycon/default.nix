@@ -18,11 +18,11 @@ let
   ]);
 in stdenv.mkDerivation {
   pname = "wifycon";
-  version = "20241119";
+  version = "20250706";
 
   src = fetchurl {
     url = "https://raw.githubusercontent.com/Ypnose/dotfiles/master/bin/wifycon";
-    hash = "sha256-R2yEQ1NfodFpk7qwlRbbcAgYEK6/g9HvikRZgsgiG4E=";
+    hash = "sha256-2EtE7/Kh8Tpeb9ChKRmJ9K64DA7ooqdgfFoXx4pG5ZQ=";
   };
 
   dontUnpack = true;
@@ -35,7 +35,7 @@ in stdenv.mkDerivation {
     install -Dm 0755 $src $out/bin/wifycon
     # Make sure shebang is modified
     sed -i "1 s|/usr/bin/mksh|${lib.getBin pkgs.mksh}/bin/mksh|" \
-		$out/bin/wifycon
+      $out/bin/wifycon
     wrapProgram $out/bin/wifycon \
       --prefix PATH : ${path}
   '';
