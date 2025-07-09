@@ -37,6 +37,7 @@
           thermal = build "thermal";
           utfdumpcode = build "utfdumpcode";
           vipe = build "vipe";
+          wakeonlan = build "wakeonlan";
           wg = build-static "wg";
           wifycon = build "wifycon";
           yss = build "yss";
