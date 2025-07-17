@@ -6,13 +6,13 @@
 
 buildGoModule rec {
   pname = "vipe";
-  version = "20250112";
+  version = "20250717";
 
   src = fetchFromGitHub {
     owner = "ypnose";
     repo = "gools";
-    rev = "ec0b36affc95737541152dbe001699a430097f7a";
-    hash = "sha256-6czQKn31gu9qHs8VUKDFf0kpUbX9roq+bs5wUbeDN0o=";
+    rev = "dce4bbcb3beaa09d4661e9479e3b19ce02c1e04e";
+    hash = "sha256-mMA9Unb0VeKfxtDGEh19cvlE6SJ1Ac85E9C6jmggne0=";
   };
 
   vendorHash = null;
