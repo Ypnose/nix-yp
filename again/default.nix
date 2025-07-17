@@ -6,13 +6,13 @@
 
 buildGoModule rec {
   pname = "again";
-  version = "20250111";
+  version = "20250717";
 
   src = fetchFromGitHub {
     owner = "ypnose";
     repo = "gools";
-    rev = "24375a7d3e0d1c928e04c1a592bf684fef311b36";
-    hash = "sha256-Y4zjoQiTzSQKwW2vdfeF+7SRAp7Rwyx4RsUt4LXFq0U=";
+    rev = "dce4bbcb3beaa09d4661e9479e3b19ce02c1e04e";
+    hash = "sha256-mMA9Unb0VeKfxtDGEh19cvlE6SJ1Ac85E9C6jmggne0=";
   };
 
   vendorHash = null;
