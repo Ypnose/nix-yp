@@ -6,13 +6,13 @@
 
 buildGoModule rec {
   pname = "thermal";
-  version = "20250722";
+  version = "20250731";
 
   src = fetchFromGitHub {
     owner = "ypnose";
     repo = "gools";
-    rev = "3e458233de2cc3a1f3122feefd09e2a6e33e0136";
-    hash = "sha256-b9cnofrSI4FLBWAqty+BSlxwSChSTiJwQ//tpU8Dxbs=";
+    rev = "7b69e2bf920f7b1322c003685cd2ff301dc19e70";
+    hash = "sha256-2n1E8ntWnyx0d1OAIJvOQaX/OupAZYFPp+hwG1++NWk=";
   };
 
   vendorHash = null;
