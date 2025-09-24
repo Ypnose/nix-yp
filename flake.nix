@@ -28,6 +28,7 @@
           emltombox = build "emltombox";
           go-pushover = build "go-pushover";
           ipinfo = build "ipinfo";
+          ldifview = build "ldifview";
           nvi-patched = build "nvi-patched";
           openbsd-ed = build-static "openbsd-ed";
           printerinfo = build "printerinfo";
