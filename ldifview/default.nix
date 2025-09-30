@@ -6,13 +6,13 @@
 
 buildGoModule rec {
   pname = "ldifview";
-  version = "20250924";
+  version = "20250930";
 
   src = fetchFromGitHub {
     owner = "ypnose";
     repo = "gools";
-    rev = "9bff8f9dbc22c3202b5dbf020f9e9bbe4ac1d260";
-    hash = "sha256-J8c9Jcvn9MkRALZDl8iqkQpDaxfnfkjL4tszFFiTPuk=";
+    rev = "89af542b73e88568d8e26b23b6817373c2c74482";
+    hash = "sha256-kkoYJbdy5QNPWqP60RLLHyzZVVD22CcHrWfODxBj/IQ=";
   };
 
   vendorHash = null;
