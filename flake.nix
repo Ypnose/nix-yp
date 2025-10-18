@@ -27,6 +27,7 @@
           dmarcreport = build "dmarcreport";
           emltombox = build "emltombox";
           go-pushover = build "go-pushover";
+          htmlentify = build "htmlentify";
           ipinfo = build "ipinfo";
           ldifview = build "ldifview";
           nvi-patched = build "nvi-patched";
