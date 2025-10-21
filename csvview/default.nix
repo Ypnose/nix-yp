@@ -6,16 +6,16 @@
 
 buildGoModule rec {
   pname = "csvview";
-  version = "20250717";
+  version = "20251021";
 
   src = fetchFromGitHub {
     owner = "ypnose";
     repo = "gools";
-    rev = "dce4bbcb3beaa09d4661e9479e3b19ce02c1e04e";
-    hash = "sha256-mMA9Unb0VeKfxtDGEh19cvlE6SJ1Ac85E9C6jmggne0=";
+    rev = "9f603ec8ffae56bb6b3b7c4b0093cf7126b1cd19";
+    hash = "sha256-At8WwuOOCw0NFCKTu+G5rWNv7m2HtAFAnV6WDATcz+M=";
   };
 
-  vendorHash = "sha256-RPOtfiICnOttDs/NQn3aJ6Fli6AYvX+CvgqX2NBjORA=";
+  vendorHash = "sha256-ew4OejtBoLuAnT2GbQWKSbvO9efLw/BUKfhSmX4y7c0=";
 
   sourceRoot = "${src.name}/csvview";
 
