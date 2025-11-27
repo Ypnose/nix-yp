@@ -6,13 +6,13 @@
 
 buildGoModule rec {
   pname = "ipinfo";
-  version = "20250624";
+  version = "20251127";
 
   src = fetchFromGitHub {
     owner = "ypnose";
     repo = "gools";
-    rev = "1a5f8febf529d044fa1ecd3c6ef3a2265aa34ae8";
-    hash = "sha256-S8oY/9og56FZ8uvIjKuipOMrYvCCeoZC8px+Q7a2k+4=";
+    rev = "9bb3b21dde867f87ebdffdf39cf427be19167207";
+    hash = "sha256-Wsh1ue5k0UEkobJ23koNdkOLO4RQUxPq/ga+/G8tuy8=";
   };
 
   vendorHash = null;
