@@ -42,6 +42,7 @@ stdenv.mkDerivation rec {
     ./nvi-31-64bit-int-crash.patch
     ./nvi-39-add-function-prototypes-to-fix-implicit-function-dec.patch
     ./nvi-40-add-more-function-prototypes-to-fix-Wimplicit-functi.patch
+    ./nvi-42-fix-ftbfs-with-gcc-15.patch
     ./nvi-50-nvi-o_path.patch
   ];
 

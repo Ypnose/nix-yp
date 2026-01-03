@@ -1,0 +1,129 @@
+From: Tobias Heider <me@tobhe.de>
+Date: Thu, 25 Sep 2025 17:30:37 +0200
+Subject: Fix ftbfs with GCC-15
+
+Bug-Debian: https://bugs.debian.org/1097482
+---
+ cl/extern.h       |  4 +---
+ common/conv.h     |  2 +-
+ common/key.h      |  4 ++--
+ gtk/gtkviscreen.c | 12 ++++++------
+ vi/vs_line.c      |  4 ++--
+ 5 files changed, 12 insertions(+), 14 deletions(-)
+
+diff --git a/cl/extern.h b/cl/extern.h
+index 6b4481e..4d9e029 100644
+--- a/cl/extern.h
++++ b/cl/extern.h
+@@ -20,9 +20,7 @@ void *newterm __P((const char *, FILE *, FILE *));
+ #ifndef HAVE_CURSES_SETUPTERM
+ void setupterm __P((char *, int, int *));
+ #endif
+-#ifdef HAVE_CURSES_TIGETSTR
+-char *tigetstr();
+-#else
++#ifndef HAVE_CURSES_TIGETSTR
+ char *tigetstr __P((char *));
+ #endif
+ #ifndef HAVE_CURSES_TIGETSTR
+diff --git a/common/conv.h b/common/conv.h
+index a7675c4..c118344 100644
+--- a/common/conv.h
++++ b/common/conv.h
+@@ -1,5 +1,5 @@
+ #define KEY_COL(sp, ch)							\
+-	(INTISWIDE(ch) ? CHAR_WIDTH(sp, ch) ? CHAR_WIDTH(sp, ch) : 	\
++	(INTISWIDE(ch) ? XCHAR_WIDTH(sp, ch) ? XCHAR_WIDTH(sp, ch) : 	\
+ 					      1 : /* extra space */	\
+ 			 KEY_LEN(sp,ch))
+ 
+diff --git a/common/key.h b/common/key.h
+index 7ddf2e3..c4cae69 100644
+--- a/common/key.h
++++ b/common/key.h
+@@ -51,7 +51,7 @@
+     iswalpha((ch))
+ #define ISALNUM(ch) \
+     iswalnum((ch))
+-#define CHAR_WIDTH(sp, ch)  wcwidth(ch)
++#define XCHAR_WIDTH(sp, ch)  wcwidth(ch)
+ #define INTISWIDE(c)	(!!(c >> 8))	    /* XXX wrong name */
+ #define WS		"%ls"
+ #define WVS		"%*ls"
+@@ -83,7 +83,7 @@
+ #define ISALNUM(ch) \
+     isalnum((ch))
+ #define INTISWIDE(c)	    0
+-#define CHAR_WIDTH(sp, ch)  1
++#define XCHAR_WIDTH(sp, ch)  1
+ #define WS		"%s"
+ #define WVS		"%*s"
+ #define WC		"%c"
+diff --git a/gtk/gtkviscreen.c b/gtk/gtkviscreen.c
+index fbc50ea..a69a162 100644
+--- a/gtk/gtkviscreen.c
++++ b/gtk/gtkviscreen.c
+@@ -9,9 +9,9 @@
+ #define INTISUCS(c)	((c & ~0x7F) && !(((c) >> 16) & 0x7F))
+ #define INTUCS(c)	(c)
+ #ifdef USE_WIDECHAR
+-#define CHAR_WIDTH(sp, ch)  wcwidth(ch)
++#define XCHAR_WIDTH(sp, ch)  wcwidth(ch)
+ #else
+-#define CHAR_WIDTH(sp, ch)  1
++#define XCHAR_WIDTH(sp, ch)  1
+ #endif
+ 
+ void * v_strset __P((CHAR_T *s, CHAR_T c, size_t n));
+@@ -170,7 +170,7 @@ gtk_vi_screen_waddstr(GtkViScreen *vi, const CHAR_T *str, int len)
+     x = vi->curx;
+     startcol = x ? endcol[x-1] : -1;
+     for (col = startcol; x < vi->curx + len; ++x)
+-	endcol[x] = col += CHAR_WIDTH(NULL, *(line+x));
++	endcol[x] = col += XCHAR_WIDTH(NULL, *(line+x));
+ 
+     mark_lines(vi, vi->cury, startcol+1, vi->cury+1, endcol[x-1]+1);
+ 
+@@ -670,9 +670,9 @@ draw_lines(GtkViScreen *vi, gint ymin, gint xmin, gint ymax, gint xmax)
+     for (y = ymin, line = vi->chars + y*vi->cols; 
+ 			     y < ymax; ++y, line += vi->cols) {
+ 	for (x = 0, xpos = 0; xpos <= xmin; ++x)
+-	    xpos += CHAR_WIDTH(NULL, *(line+x));
++	    xpos += XCHAR_WIDTH(NULL, *(line+x));
+ 	--x;
+-	xpos -= CHAR_WIDTH(NULL, *(line+x));
++	xpos -= XCHAR_WIDTH(NULL, *(line+x));
+ 	for (; xpos < xmax; x+=len, xpos+= blen) {
+ 	    gchar inverse;
+ 	    inverse = Inverse(vi,y,x); 
+@@ -706,7 +706,7 @@ draw_lines(GtkViScreen *vi, gint ymin, gint xmin, gint ymax, gint xmax)
+ 		    pango_context_set_lang(vi->conx, "en_US");
+ 		    vi->alist = pango_attr_list_new();
+ 		}
+-		blen = CHAR_WIDTH(NULL, *(line+x));
++		blen = XCHAR_WIDTH(NULL, *(line+x));
+ 		pango = 1;
+ 	    } else 
+ #endif
+diff --git a/vi/vs_line.c b/vi/vs_line.c
+index a7d38fa..68f2f8d 100644
+--- a/vi/vs_line.c
++++ b/vi/vs_line.c
+@@ -429,7 +429,7 @@ display:
+ 				FLUSH;
+ 
+ 			/* don't display half a wide character */
+-			if (is_partial && CHAR_WIDTH(sp, ch) > 1) {
++			if (is_partial && XCHAR_WIDTH(sp, ch) > 1) {
+ 				*cbp++ = ' ';
+ 				break;
+ 			}
+@@ -437,7 +437,7 @@ display:
+ 			/* XXXX this needs some rethinking */
+ 			if (INTISWIDE(ch)) {
+ 				/* Put a space before non-spacing char. */
+-				if (!CHAR_WIDTH(sp, ch))
++				if (!XCHAR_WIDTH(sp, ch))
+ 					*cbp++ = L(' ');
+ 				*cbp++ = ch;
+ 			} else
