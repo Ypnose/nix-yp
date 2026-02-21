@@ -6,13 +6,13 @@
 
 buildGoModule rec {
   pname = "emltombox";
-  version = "20260125";
+  version = "20260221";
 
   src = fetchFromGitHub {
     owner = "ypnose";
     repo = "gools";
-    rev = "3282bd4798b6edbe8e01c45f5ce8e6120f68c578";
-    hash = "sha256-wSXpM1EBKdf8EsEFDYL40ZVNS0c+12vE7XgpUQSa4oM=";
+    rev = "b66a74c7f32b0fc94cb5868b154c1d0dab893de1";
+    hash = "sha256-5yrMzQUxwKD+3VJpDRp3abK3AAFWdviwXpYtAuRFAGo=";
   };
 
   vendorHash = null;
