@@ -6,13 +6,13 @@
 
 buildGoModule rec {
   pname = "wakeonlan";
-  version = "20250609";
+  version = "20260221";
 
   src = fetchFromGitHub {
     owner = "ypnose";
     repo = "gools";
-    rev = "c2541b65a5b4a77fc0e739be5406bff695335055";
-    hash = "sha256-hb1N2UPkNuuXlV14UrFz0QPZ/Ye2HTRZL6vCcasX+VI=";
+    rev = "b66a74c7f32b0fc94cb5868b154c1d0dab893de1";
+    hash = "sha256-5yrMzQUxwKD+3VJpDRp3abK3AAFWdviwXpYtAuRFAGo=";
   };
 
   vendorHash = null;
