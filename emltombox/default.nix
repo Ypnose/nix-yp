@@ -1,5 +1,4 @@
 { lib
-, stdenv
 , fetchFromGitHub
 , buildGoModule
 }:
@@ -19,11 +18,12 @@ buildGoModule rec {
 
   sourceRoot = "${src.name}/emltombox";
 
-  ldflags = [ "-s" ];
+  ldflags = [ "-s" "-w" ];
 
-  meta = {
-    homepage = "https://github.com/Ypnose/gools";
+  meta = with lib; {
     description = "Simple tool to merge EML files to MBOX";
-    platforms = lib.platforms.unix;
+    homepage = "https://github.com/Ypnose/gools";
+    platforms = platforms.unix;
+    mainProgram = "emltombox";
   };
 }

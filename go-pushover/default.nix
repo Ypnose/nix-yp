@@ -1,5 +1,4 @@
 { lib
-, stdenv
 , fetchFromGitHub
 , buildGoModule
 }:
@@ -19,11 +18,12 @@ buildGoModule rec {
 
   sourceRoot = "${src.name}/go-pushover";
 
-  ldflags = [ "-w -s" ];
+  ldflags = [ "-s" "-w" ];
 
-  meta = {
-    homepage = "https://github.com/Ypnose/gools";
+  meta = with lib; {
     description = "Simple tool to send data to Pushover Message API";
-    platforms = lib.platforms.unix;
+    homepage = "https://github.com/Ypnose/gools";
+    platforms = platforms.unix;
+    mainProgram = "go-pushover";
   };
 }

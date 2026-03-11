@@ -11,18 +11,19 @@ stdenv.mkDerivation {
     owner = "Ypnose";
     repo = "openbsd-ed";
     rev = "1cbf408584e430915ca91c272db4b1462817695f";
-    sha256 = "sha256-g2U1ZV05BCf4o/6YChx8LF/HoOj17gBsU/DyUxwqmpw=";
+    hash = "sha256-g2U1ZV05BCf4o/6YChx8LF/HoOj17gBsU/DyUxwqmpw=";
   };
 
   dontConfigure = true;
 
   installPhase = ''
-    install -Dm 0755 ed $out/bin/ed
+    install -Dm 0755 ed "$out/bin/ed"
   '';
 
-  meta = {
-    homepage = "https://www.openbsd.org/";
+  meta = with lib; {
     description = "Line-oriented text editor";
-    platforms = lib.platforms.unix;
+    homepage = "https://www.openbsd.org/";
+    platforms = platforms.unix;
+    mainProgram = "ed";
   };
 }

@@ -41,11 +41,12 @@ stdenv.mkDerivation rec {
   ];
 
   makeFlags = [ "-C lib" ];
+  enableParallelBuilding = true;
 
   postInstall = ''
     make -C bin/dig install
     # Headers not needed
-    rm -r $out/include/
+    rm -r "$out/include/"
   '';
 
   meta = {

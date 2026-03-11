@@ -17,12 +17,13 @@ stdenv.mkDerivation {
   dontBuild = true;
 
   installPhase = ''
-    install -Dm 0755 $src $out/bin/yss
+    install -Dm 0755 "$src" "$out/bin/yss"
   '';
 
-  meta = {
-    homepage = "https://framagit.org/Ypnose/yss";
+  meta = with lib; {
     description = "Script to display some information about the current system";
-    platforms = lib.platforms.all;
+    homepage = "https://framagit.org/Ypnose/yss";
+    platforms = platforms.all;
+    mainProgram = "yss";
   };
 }

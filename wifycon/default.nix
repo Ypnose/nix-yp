@@ -1,8 +1,8 @@
 { lib
-, pkgs
 , stdenv
 , fetchurl
 , makeWrapper
+, mksh
 , iproute2
 , procps
 , wpa_supplicant
@@ -32,17 +32,18 @@ in stdenv.mkDerivation {
   nativeBuildInputs = [ makeWrapper ];
 
   installPhase = ''
-    install -Dm 0755 $src $out/bin/wifycon
+    install -Dm 0755 "$src" "$out/bin/wifycon"
     # Make sure shebang is modified
-    sed -i "1 s|/usr/bin/mksh|${lib.getBin pkgs.mksh}/bin/mksh|" \
+    sed -i "1 s|/usr/bin/mksh|${lib.getBin mksh}/bin/mksh|" \
       $out/bin/wifycon
-    wrapProgram $out/bin/wifycon \
+    wrapProgram "$out/bin/wifycon" \
       --prefix PATH : ${path}
   '';
 
-  meta = {
-    homepage = "https://github.com/Ypnose/dotfiles";
+  meta = with lib; {
     description = "Script to connect on Wi-Fi networks";
-    platforms = lib.platforms.all;
+    homepage = "https://github.com/Ypnose/dotfiles";
+    platforms = platforms.all;
+    mainProgram = "wifycon";
   };
 }

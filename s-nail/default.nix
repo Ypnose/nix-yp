@@ -21,6 +21,7 @@ stdenv.mkDerivation rec {
 
   strictDeps = true;
   dontConfigure = true;
+  enableParallelBuilding = true;
 
   buildPhase = ''
     make config \
@@ -34,12 +35,13 @@ stdenv.mkDerivation rec {
   '';
 
   installPhase = ''
-    make DESTDIR=$out packager-install
+    make DESTDIR="$out" packager-install
   '';
 
-  meta = {
-    homepage = "https://www.sdaoden.eu/code.html#s-mailx";
+  meta = with lib; {
     description = "Environment for sending and receiving mail";
-    platforms = lib.platforms.unix;
+    homepage = "https://www.sdaoden.eu/code.html#s-mailx";
+    platforms = platforms.unix;
+    mainProgram = "s-nail";
   };
 }

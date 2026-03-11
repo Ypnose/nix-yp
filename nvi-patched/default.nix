@@ -58,12 +58,13 @@ stdenv.mkDerivation rec {
   ];
 
   installPhase = ''
-    install -Dm 0755 vi $out/bin/vi
+    install -Dm 0755 vi "$out/bin/vi"
   '';
 
   meta = with lib; {
     description = "The Berkeley Vi Editor";
     license = licenses.free;
     platforms = platforms.unix;
+    mainProgram = "vi";
   };
 }

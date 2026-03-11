@@ -1,5 +1,4 @@
 { lib
-, stdenv
 , fetchFromGitHub
 , buildGoModule
 }:
@@ -19,11 +18,12 @@ buildGoModule rec {
 
   sourceRoot = "${src.name}/ipinfo";
 
-  ldflags = [ "-w -s" ];
+  ldflags = [ "-s" "-w" ];
 
-  meta = {
-    homepage = "https://github.com/Ypnose/gools";
+  meta = with lib; {
     description = "Simple tool to gather information from IPinfo.io";
-    platforms = lib.platforms.unix;
+    homepage = "https://github.com/Ypnose/gools";
+    platforms = platforms.unix;
+    mainProgram = "ipinfo";
   };
 }
