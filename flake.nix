@@ -28,6 +28,7 @@
           htmlentify = build "htmlentify";
           ipinfo = build "ipinfo";
           ldifview = build "ldifview";
+          nextvi-patched = build "nextvi-patched";
           nvi-patched = build "nvi-patched";
           openbsd-ed = build-static "openbsd-ed";
           printerinfo = build "printerinfo";
