@@ -1,23 +1,27 @@
 { lib
 , stdenv
 , fetchFromGitHub
+, nextvi
 }:
 
 stdenv.mkDerivation rec {
   pname = "nextvi";
-  version = "4.1";
+  version = "4.2";
 
   src = fetchFromGitHub {
     owner = "kyx0r";
     repo = "nextvi";
     rev = version;
-    hash = "sha256-sk4vqMfRDP0H3DESZj57jGVo6Vf2hd9f9OaePFEtdfE=";
+    hash = "sha256-pkVUCWWVzPwPEG4NGWOoHrXkQpC245kD/Xbj9wmxR3E=";
   };
 
+  nativeBuildInputs = [ nextvi ];
+
   patchPhase = ''
-    ./arrowkeys_insert.sh patch
-    ./arrowkeys_normal.sh patch
-    ./stdin_pipe.sh patch
+    export VI=nextvi
+    ./arrowkeys_insert.sh
+    ./arrowkeys_normal.sh
+    ./stdin_pipe.sh
   '';
 
   dontConfigure = true;
