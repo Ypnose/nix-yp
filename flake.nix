@@ -5,6 +5,9 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
+  # Phases
+  # https://nixos.org/manual/nixpkgs/stable/#sec-stdenv-phases
+
   # nix flake show
   # nix hash to-sri sha256:HASH
   # nix build .#PKG
