@@ -1,7 +1,6 @@
 { lib
 , stdenv
 , fetchFromGitHub
-, nextvi
 }:
 
 stdenv.mkDerivation rec {
@@ -15,18 +14,19 @@ stdenv.mkDerivation rec {
     hash = "sha256-pkVUCWWVzPwPEG4NGWOoHrXkQpC245kD/Xbj9wmxR3E=";
   };
 
-  nativeBuildInputs = [ nextvi ];
-
-  patchPhase = ''
-    export VI=nextvi
-    ./arrowkeys_insert.sh
-    ./arrowkeys_normal.sh
-    ./stdin_pipe.sh
-  '';
-
   dontConfigure = true;
 
   buildPhase = ''
+    # The patches cannot be applied without nextvi, so build it first
+    # before applying patches and then build "real" binary
+    ./cbuild.sh
+    printf "%s\n" "==> Applying patches"
+    export VI="''${PWD}/vi"
+    ./arrowkeys_insert.sh
+    ./arrowkeys_normal.sh
+    ./stdin_pipe.sh
+    printf "%s\n" "==> Building final binary"
+    ./cbuild.sh clean
     ./cbuild.sh
   '';
 
