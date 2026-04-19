@@ -5,13 +5,13 @@
 
 stdenv.mkDerivation rec {
   pname = "nextvi";
-  version = "4.2";
+  version = "4.2.0";
 
   src = fetchFromGitHub {
     owner = "kyx0r";
     repo = "nextvi";
     rev = version;
-    hash = "sha256-pkVUCWWVzPwPEG4NGWOoHrXkQpC245kD/Xbj9wmxR3E=";
+    hash = "sha256-kfiaXOBcsKlaxkCHwuLA2xK7A9Ug6qSJg8HSHrIWWPI=";
   };
 
   dontConfigure = true;
