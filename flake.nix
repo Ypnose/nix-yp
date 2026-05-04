@@ -36,6 +36,7 @@
           openbsd-ed = build-static "openbsd-ed";
           printerinfo = build "printerinfo";
           s-nail = build "s-nail";
+          sogogi = build "sogogi";
           sponge = build "sponge";
           tempo = build "tempo";
           thermal = build "thermal";
