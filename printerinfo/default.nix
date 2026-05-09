@@ -5,13 +5,13 @@
 
 buildGoModule rec {
   pname = "printerinfo";
-  version = "20260221";
+  version = "20260509";
 
   src = fetchFromGitHub {
     owner = "ypnose";
     repo = "gools";
-    rev = "b66a74c7f32b0fc94cb5868b154c1d0dab893de1";
-    hash = "sha256-5yrMzQUxwKD+3VJpDRp3abK3AAFWdviwXpYtAuRFAGo=";
+    rev = "08fe560c689f2de3ed6938e2187f642dfe470124";
+    hash = "sha256-DTGM3ab+MYcuou/dnOpOKbuMs4ZJtxenrBl+EjhmlYg=";
   };
 
   vendorHash = "sha256-95aTIiAZja0HFdrBq4h9EwzNygBOEWlbjRBXLuXYdm4=";
