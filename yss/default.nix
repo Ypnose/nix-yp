@@ -1,23 +1,37 @@
 { lib
 , stdenv
 , fetchurl
+, makeWrapper
+, hostname
+, coreutils-full
+, gawk
 }:
 
-stdenv.mkDerivation {
+let
+  path = lib.makeBinPath ([
+    hostname
+    coreutils-full
+    gawk
+  ]);
+in stdenv.mkDerivation {
   pname = "yss";
-  version = "20260103";
+  version = "20260526";
 
   src = fetchurl {
     url = "https://framagit.org/Ypnose/yss/-/raw/master/yss";
-    hash = "sha256-Uhy8L0gZkpV8bglE56bQYdGAampCPFqqM2OFP5Bb910=";
+    hash = "sha256-AQZTlkjaDdcx8roUFunC8TXb4jtBpCcdWmBErVzmXSQ=";
   };
 
   dontUnpack = true;
   dontConfigure = true;
   dontBuild = true;
 
+  nativeBuildInputs = [ makeWrapper ];
+
   installPhase = ''
     install -Dm 0755 "$src" "$out/bin/yss"
+    wrapProgram "$out/bin/yss" \
+      --prefix PATH : ${path}
   '';
 
   meta = with lib; {
