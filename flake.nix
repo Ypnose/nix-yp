@@ -30,6 +30,7 @@
           go-pushover = build "go-pushover";
           htmlentify = build "htmlentify";
           ipinfo = build "ipinfo";
+          kwyc = build "kwyc";
           ldifview = build "ldifview";
           nextvi-patched = build "nextvi-patched";
           nvi-patched = build "nvi-patched";
