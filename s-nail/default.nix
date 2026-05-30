@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
   version = "14.9.25";
 
   src = fetchurl {
-    url = "https://www.sdaoden.eu/downloads/s-nail-${version}.tar.xz";
+    url = "https://www.sdaoden.eu/downloads/${pname}-${version}.tar.xz";
     hash = "sha256-IP8FW+mCm2nUbrxADf5RakDSh9fOgQx0NV1r3Boo2Kk=";
   };
 
