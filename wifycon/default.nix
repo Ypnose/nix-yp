@@ -43,7 +43,7 @@ in stdenv.mkDerivation {
   meta = with lib; {
     description = "Script to connect on Wi-Fi networks";
     homepage = "https://github.com/Ypnose/dotfiles";
-    platforms = platforms.all;
+    platforms = platforms.linux;
     mainProgram = "wifycon";
   };
 }

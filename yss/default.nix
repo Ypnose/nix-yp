@@ -37,7 +37,7 @@ in stdenv.mkDerivation {
   meta = with lib; {
     description = "Script to display some information about the current system";
     homepage = "https://framagit.org/Ypnose/yss";
-    platforms = platforms.all;
+    platforms = platforms.linux;
     mainProgram = "yss";
   };
 }

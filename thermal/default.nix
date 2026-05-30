@@ -23,7 +23,7 @@ buildGoModule rec {
   meta = with lib; {
     description = "Simple tool to display sensors and thermal values";
     homepage = "https://github.com/Ypnose/gools";
-    platforms = platforms.unix;
+    platforms = platforms.linux;
     mainProgram = "thermal";
   };
 }

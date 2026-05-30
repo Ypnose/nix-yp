@@ -23,7 +23,7 @@ stdenv.mkDerivation {
   meta = with lib; {
     description = "Line-oriented text editor";
     homepage = "https://www.openbsd.org/";
-    platforms = platforms.unix;
+    platforms = platforms.linux;
     mainProgram = "ed";
   };
 }
