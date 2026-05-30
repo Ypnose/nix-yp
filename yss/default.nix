@@ -13,12 +13,13 @@ let
     coreutils-full
     gawk
   ]);
-in stdenv.mkDerivation {
+in stdenv.mkDerivation rec {
   pname = "yss";
-  version = "20260526";
+  commit = "90bafc7b68d7dbbd64d098ce9b0b99504e5675ab";
+  version = "20260530";
 
   src = fetchurl {
-    url = "https://framagit.org/Ypnose/yss/-/raw/master/yss";
+    url = "https://framagit.org/Ypnose/${pname}/-/raw/${commit}/${pname}";
     hash = "sha256-AQZTlkjaDdcx8roUFunC8TXb4jtBpCcdWmBErVzmXSQ=";
   };
 
