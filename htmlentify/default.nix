@@ -5,13 +5,13 @@
 
 buildGoModule rec {
   pname = "htmlentify";
-  version = "20260125";
+  version = "20260818";
 
   src = fetchFromGitHub {
     owner = "ypnose";
     repo = "gools";
-    rev = "3282bd4798b6edbe8e01c45f5ce8e6120f68c578";
-    hash = "sha256-wSXpM1EBKdf8EsEFDYL40ZVNS0c+12vE7XgpUQSa4oM=";
+    rev = "9054e15243cfaa080d5ae65a9e6b1e7bd6d09c86";
+    hash = "sha256-mp5WOoSqaRRAbkrqMxUewbDnMEdxdGzodNHC8zyFrVY=";
   };
 
   vendorHash = null;
