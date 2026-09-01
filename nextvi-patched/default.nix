@@ -5,24 +5,28 @@
 
 stdenv.mkDerivation rec {
   pname = "nextvi";
-  version = "7.3";
+  version = "7.4";
 
   src = fetchFromGitHub {
     owner = "kyx0r";
     repo = "nextvi";
     rev = version;
-    hash = "sha256-9kgDsdxa92XYxK6cnwKHP5ZmHMI3GFcCmIPKSD8b5zA=";
+    hash = "sha256-DZDaF3Na4jaAZcR4Tzx+9r+uBg/PRw6uwUlQtlCXiuk=";
   };
-
-  patchPhase = ''
-    ./arrowkeys_insert.sh patch
-    ./arrowkeys_normal.sh patch
-    ./stdin_pipe.sh patch
-  '';
 
   dontConfigure = true;
 
   buildPhase = ''
+    # Build vanilla nextvi to apply patches and then build "real" binary
+    ./cbuild.sh
+    printf "%s\n" "==> Applying patches"
+    export VI="''${PWD}/vi"
+    # Patches
+    ./arrowkeys_insert.sh
+    ./arrowkeys_normal.sh
+    ./stdin_pipe.sh
+    printf "%s\n" "==> Patches applied. Building final binary"
+    ./cbuild.sh clean
     ./cbuild.sh
   '';
 
