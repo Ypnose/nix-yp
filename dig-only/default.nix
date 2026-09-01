@@ -7,19 +7,21 @@
 , libtool
 , openssl
 , libuv
+, liburcu
+, libcap
 }:
 
 stdenv.mkDerivation rec {
   pname = "bind";
-  version = "9.18.39";
+  version = "9.20.27";
 
   src = fetchurl {
     url = "https://downloads.isc.org/isc/bind9/${version}/${pname}-${version}.tar.xz";
-    hash = "sha256-cldVIyGG875KB9fkCXijOJQ0vvfAzcJizGQaNkByl20=";
+    hash = "sha256-FFq3pQszoG2dSIteZoyIfnVPQqz4lU4rXcfiOLCA5KA=";
   };
 
   nativeBuildInputs = [ pkg-config perl ];
-  buildInputs = [ libidn2 libtool openssl libuv ];
+  buildInputs = [ libidn2 libtool openssl libuv liburcu libcap ];
 
   configureFlags = [
     "--localstatedir=/var"
