@@ -7,12 +7,12 @@
 , libidn2
 }:
 
-stdenv.mkDerivation rec {
+stdenv.mkDerivation (finalAttrs: {
   pname = "s-nail";
   version = "14.9.25";
 
   src = fetchurl {
-    url = "https://www.sdaoden.eu/downloads/${pname}-${version}.tar.xz";
+    url = "https://www.sdaoden.eu/downloads/s-nail-${finalAttrs.version}.tar.xz";
     hash = "sha256-IP8FW+mCm2nUbrxADf5RakDSh9fOgQx0NV1r3Boo2Kk=";
   };
 
@@ -24,6 +24,8 @@ stdenv.mkDerivation rec {
   enableParallelBuilding = true;
 
   buildPhase = ''
+    runHook preBuild
+
     make config \
       OPT_GSSAPI=no \
       OPT_POP3=no \
@@ -32,16 +34,23 @@ stdenv.mkDerivation rec {
       VAL_SYSCONFDIR=/etc \
       VAL_MAIL=/var/spool/mail
     make build
+
+    runHook postBuild
   '';
 
   installPhase = ''
+    runHook preInstall
+
     make DESTDIR="$out" packager-install
+
+    runHook postInstall
   '';
 
-  meta = with lib; {
+  meta = {
     description = "Environment for sending and receiving mail";
     homepage = "https://www.sdaoden.eu/code.html#s-mailx";
-    platforms = platforms.unix;
+    platforms = lib.platforms.unix;
+    license = lib.licenses.isc;
     mainProgram = "s-nail";
   };
-}
+})

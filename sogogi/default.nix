@@ -3,7 +3,7 @@
 , buildGoModule
 }:
 
-buildGoModule rec {
+buildGoModule {
   pname = "sogogi";
   version = "20260411";
 
@@ -18,10 +18,11 @@ buildGoModule rec {
 
   ldflags = [ "-s" "-w" ];
 
-  meta = with lib; {
+  meta = {
     description = "A simple WebDAV server";
     homepage = "https://codeberg.org/emersion/sogogi";
-    platforms = platforms.linux;
+    platforms = lib.platforms.linux;
+    license = lib.licenses.agpl3Plus;
     mainProgram = "sogogi";
   };
 }

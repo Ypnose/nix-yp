@@ -1,44 +1,44 @@
 { lib
 , stdenv
-, fetchurl
+, fetchFromGitLab
 , makeWrapper
 , hostname
 , coreutils-full
 , gawk
 }:
 
-let
-  path = lib.makeBinPath ([
-    hostname
-    coreutils-full
-    gawk
-  ]);
-in stdenv.mkDerivation rec {
+stdenv.mkDerivation {
   pname = "yss";
-  commit = "90bafc7b68d7dbbd64d098ce9b0b99504e5675ab";
   version = "20260530";
 
-  src = fetchurl {
-    url = "https://framagit.org/Ypnose/${pname}/-/raw/${commit}/${pname}";
-    hash = "sha256-AQZTlkjaDdcx8roUFunC8TXb4jtBpCcdWmBErVzmXSQ=";
+  src = fetchFromGitLab {
+    domain = "framagit.org";
+    owner = "Ypnose";
+    repo = "yss";
+    rev = "90bafc7b68d7dbbd64d098ce9b0b99504e5675ab";
+    hash = "sha256-rMZNSKbFsB8E6XU3yb0/VA4iXT0Of6fTUqEEwnrpJrA=";
   };
 
-  dontUnpack = true;
   dontConfigure = true;
   dontBuild = true;
 
   nativeBuildInputs = [ makeWrapper ];
 
   installPhase = ''
-    install -Dm 0755 "$src" "$out/bin/yss"
+    runHook preInstall
+
+    install -Dm 0755 yss "$out/bin/yss"
     wrapProgram "$out/bin/yss" \
-      --prefix PATH : ${path}
+      --prefix PATH : "${lib.makeBinPath [ hostname coreutils-full gawk ]}"
+
+    runHook postInstall
   '';
 
-  meta = with lib; {
+  meta = {
     description = "Script to display some information about the current system";
     homepage = "https://framagit.org/Ypnose/yss";
-    platforms = platforms.linux;
+    platforms = lib.platforms.linux;
+    license = lib.licenses.bsd3;
     mainProgram = "yss";
   };
 }

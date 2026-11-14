@@ -14,16 +14,22 @@ stdenv.mkDerivation {
     hash = "sha256-g2U1ZV05BCf4o/6YChx8LF/HoOj17gBsU/DyUxwqmpw=";
   };
 
+  strictDeps = true;
   dontConfigure = true;
 
   installPhase = ''
+    runHook preInstall
+
     install -Dm 0755 ed "$out/bin/ed"
+
+    runHook postInstall
   '';
 
-  meta = with lib; {
+  meta = {
     description = "Line-oriented text editor";
     homepage = "https://www.openbsd.org/";
-    platforms = platforms.linux;
+    platforms = lib.platforms.linux;
+    license = lib.licenses.isc;
     mainProgram = "ed";
   };
 }

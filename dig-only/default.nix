@@ -11,17 +11,19 @@
 , libcap
 }:
 
-stdenv.mkDerivation rec {
-  pname = "bind";
+stdenv.mkDerivation (finalAttrs: {
+  pname = "dig-only";
   version = "9.20.27";
 
   src = fetchurl {
-    url = "https://downloads.isc.org/isc/bind9/${version}/${pname}-${version}.tar.xz";
+    url = "https://downloads.isc.org/isc/bind9/${finalAttrs.version}/bind-${finalAttrs.version}.tar.xz";
     hash = "sha256-FFq3pQszoG2dSIteZoyIfnVPQqz4lU4rXcfiOLCA5KA=";
   };
 
-  nativeBuildInputs = [ pkg-config perl ];
-  buildInputs = [ libidn2 libtool openssl libuv liburcu libcap ];
+  strictDeps = true;
+
+  nativeBuildInputs = [ pkg-config libtool perl ];
+  buildInputs = [ libidn2 openssl libuv liburcu libcap ];
 
   configureFlags = [
     "--localstatedir=/var"
@@ -42,7 +44,7 @@ stdenv.mkDerivation rec {
     "--without-zlib"
   ];
 
-  makeFlags = [ "-C lib" ];
+  makeFlags = [ "-C" "lib" ];
   enableParallelBuilding = true;
 
   postInstall = ''
@@ -56,5 +58,6 @@ stdenv.mkDerivation rec {
     description = "dig & other utils from BIND";
     platforms = lib.platforms.unix;
     license = lib.licenses.mpl20;
+    mainProgram = "dig";
   };
-}
+})

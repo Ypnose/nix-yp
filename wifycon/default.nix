@@ -1,6 +1,6 @@
 { lib
 , stdenv
-, fetchurl
+, fetchFromGitHub
 , makeWrapper
 , mksh
 , iproute2
@@ -9,41 +9,40 @@
 , dhcpcd
 }:
 
-let
-  path = lib.makeBinPath ([
-    iproute2
-    procps
-    wpa_supplicant
-    dhcpcd
-  ]);
-in stdenv.mkDerivation {
+stdenv.mkDerivation {
   pname = "wifycon";
   version = "20250706";
 
-  src = fetchurl {
-    url = "https://raw.githubusercontent.com/Ypnose/dotfiles/master/bin/wifycon";
-    hash = "sha256-2EtE7/Kh8Tpeb9ChKRmJ9K64DA7ooqdgfFoXx4pG5ZQ=";
+  src = fetchFromGitHub {
+    owner = "Ypnose";
+    repo = "dotfiles";
+    rev = "fb003b518b89ccbbf0d639e38779a96c160c59b0";
+    hash = "sha256-62nxLOpktgXiitwmRNCBNtZjS6USMzptElRY/lpHQEg=";
   };
 
-  dontUnpack = true;
   dontConfigure = true;
   dontBuild = true;
 
   nativeBuildInputs = [ makeWrapper ];
 
   installPhase = ''
-    install -Dm 0755 "$src" "$out/bin/wifycon"
+    runHook preInstall
+
+    install -Dm 0755 ./bin/wifycon "$out/bin/wifycon"
     # Make sure shebang is modified
     sed -i "1 s|/usr/bin/mksh|${lib.getBin mksh}/bin/mksh|" \
       $out/bin/wifycon
     wrapProgram "$out/bin/wifycon" \
-      --prefix PATH : ${path}
+      --prefix PATH : "${lib.makeBinPath [ iproute2 procps wpa_supplicant dhcpcd ]}"
+
+    runHook postInstall
   '';
 
-  meta = with lib; {
+  meta = {
     description = "Script to connect on Wi-Fi networks";
     homepage = "https://github.com/Ypnose/dotfiles";
-    platforms = platforms.linux;
+    platforms = lib.platforms.linux;
+    license = lib.licenses.bsd3;
     mainProgram = "wifycon";
   };
 }

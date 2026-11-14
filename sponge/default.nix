@@ -3,12 +3,12 @@
 , buildGoModule
 }:
 
-buildGoModule rec {
+buildGoModule {
   pname = "sponge";
   version = "20260818";
 
   src = fetchFromGitHub {
-    owner = "ypnose";
+    owner = "Ypnose";
     repo = "gools";
     rev = "9054e15243cfaa080d5ae65a9e6b1e7bd6d09c86";
     hash = "sha256-mp5WOoSqaRRAbkrqMxUewbDnMEdxdGzodNHC8zyFrVY=";
@@ -16,14 +16,15 @@ buildGoModule rec {
 
   vendorHash = null;
 
-  sourceRoot = "${src.name}/sponge";
+  modRoot = "sponge";
 
   ldflags = [ "-s" "-w" ];
 
-  meta = with lib; {
+  meta = {
     description = "Simple tool to absorb stdin to write it in a file";
     homepage = "https://github.com/Ypnose/gools";
-    platforms = platforms.unix;
+    platforms = lib.platforms.unix;
+    license = lib.licenses.bsd3;
     mainProgram = "sponge";
   };
 }
