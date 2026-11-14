@@ -36,6 +36,7 @@
           nextvi-patched = build "nextvi-patched";
           nvi-patched = build "nvi-patched";
           openbsd-ed = build-static "openbsd-ed";
+          opende = build "opende";
           printerinfo = build "printerinfo";
           s-nail = build "s-nail";
           sogogi = build "sogogi";
