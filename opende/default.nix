@@ -18,6 +18,7 @@
 , libxkbcommon
 , libxrandr
 , libxscrnsaver
+, openssl
 , wayland
 , wayland-scanner
 , wayland-protocols
@@ -39,19 +40,20 @@ let
     libxkbcommon
     libxrandr
     libxscrnsaver
+    openssl
     wayland
     wayland-protocols
   ];
 in
 stdenv.mkDerivation (finalAttrs: {
   pname = "opende";
-  version = "1.0.4";
+  version = "1.0.5";
 
   src = fetchFromGitHub {
     owner = "jarmitage99";
     repo = "OpenDE";
     tag = finalAttrs.version;
-    hash = "sha256-FrSzRJgQjyoCN1WhlvKys2qBEibBt1aBVecQqYzrPbk=";
+    hash = "sha256-VZd6HWcP70kR+L+tO7rd7n7eVG/qXMZo/SttNpYbPdo=";
   };
 
   strictDeps = true;
